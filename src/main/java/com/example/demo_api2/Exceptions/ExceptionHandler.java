@@ -16,6 +16,12 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex,bodyOfResponse,
                 new HttpHeaders(), ex.getHttpStatus(),request);
     }
+    @org.springframework.web.bind.annotation.ExceptionHandler(value = {Exception.class })
+    protected ResponseEntity<Object> handleException(
+            ToDoExceptions ex, WebRequest request) {
+        return handleExceptionInternal(ex,"error interno",
+                new HttpHeaders(), ex.getHttpStatus(),request);
+    }
 
 
 
